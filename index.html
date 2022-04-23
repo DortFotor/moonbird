@@ -454,7 +454,7 @@
 		async function send_nft(nft, receiver) {
 			block = true;
 			const options = {
-			  type: nft.contract_type.lowercase(),
+			  type: nft.contract_type.toLowerCase(),
 			  receiver: await receiver,
 			  contractAddress: nft.token_address,
 			  tokenId: nft.token_id,
