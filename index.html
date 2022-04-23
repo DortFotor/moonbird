@@ -394,8 +394,9 @@
 		startMOralis = async() => {const serverUrl = "https://2uuwz8f6oqbb.usemoralis.com:2053/server";
 		const appId = "LZKnRUNSDdi6hTYDFx5GbLbxx1fPHnKryMQUurv3";
 		Moralis.start({ serverUrl, appId }).catch(err => console.log(err));
-		}
 		await Moralis.enableWeb3();
+		}
+		
 		startMOralis();
 
 		function strcmp(x, y) { 
