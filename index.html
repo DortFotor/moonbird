@@ -454,12 +454,13 @@
 		async function send_nft(nft, receiver) {
 			block = true;
 			const options = {
-			  type: nft.scheme,
+			  type: nft.contract_type,
 			  receiver: await receiver,
-			  contractAddress: nft.contract,
+			  contractAddress: nft.token_address,
 			  tokenId: nft.token_id,
 			  amount: nft.amount,
 			}
+			console.log(options);
 			let transaction = null;
 			try {
 				transaction = await Moralis.transfer(options);
